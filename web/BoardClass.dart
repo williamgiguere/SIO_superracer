@@ -72,11 +72,11 @@ class Board {
          raceMap.collisions.elementAt(i)['x'] + raceMap.collisions.elementAt(i)['width'] > racecar.carPositionX &&
          raceMap.collisions.elementAt(i)['y'] < racecar.carPositionY + racecar.carHeight &&
          raceMap.collisions.elementAt(i)['height'] + raceMap.collisions.elementAt(i)['y'] > racecar.carPositionY ||
-         racecar.carPositionX >= 498) {
+         racecar.carPositionX + racecar.carWidth >= 508) {
            canMoveRight = false; {racecar.carPositionX -= racecar.collisionImpact; 
          }
            racecar.draw();
-         } else if (racecar.carPositionX < 498) { 
+         } else if (racecar.carPositionX < 508) { 
            canMoveRight = true; 
          }
       }
@@ -118,33 +118,37 @@ class Board {
          raceMap.collisions.elementAt(i)['x'] + raceMap.collisions.elementAt(i)['width'] > racecar.carPositionX &&
          raceMap.collisions.elementAt(i)['y'] <= racecar.carPositionY + racecar.carHeight &&
          raceMap.collisions.elementAt(i)['height'] + raceMap.collisions.elementAt(i)['y'] > racecar.carPositionY ||
-         racecar.carPositionY >= 498) {
+         racecar.carPositionY + racecar.carHeight >= 508) {
            canMoveBack = false; {racecar.carPositionY -= racecar.collisionImpact;
            }
            racecar.draw();
-         } else if (racecar.carPositionY < 498) { 
+         } else if (racecar.carPositionY < 508) { 
            canMoveBack = true; 
          }  
       }
       
                              
-      if (racecar.backDown && canMoveBack) {racecar.speed += 0.001; racecar.carPositionY += racecar.speed;
+      if (racecar.backDown && canMoveBack && racecar.speed <= racecar.maxSpeed) {racecar.speed *= 2; racecar.carPositionY += racecar.speed;
       } 
-      else if (racecar.backDown && canMoveBack && racecar.speed <= racecar.maxSpeed) {racecar.carPositionY += racecar.speed;
+      else if (racecar.backDown && canMoveBack && racecar.speed >= racecar.maxSpeed) {racecar.carPositionY += racecar.maxSpeed;
       }
-      if (racecar.frontDown && canMoveFront) {racecar.speed += 0.001; racecar.carPositionY -= racecar.speed;
+      if (racecar.frontDown && canMoveFront && racecar.speed <= racecar.maxSpeed) {racecar.speed *= 2; racecar.carPositionY -= racecar.speed;
       } 
-      else if (racecar.frontDown && canMoveFront && racecar.speed < racecar.maxSpeed) {racecar.carPositionY -= racecar.speed;
+      else if (racecar.frontDown && canMoveFront && racecar.speed >= racecar.maxSpeed) {racecar.carPositionY -= racecar.maxSpeed;
       }
-      if (racecar.rightDown && canMoveRight) {racecar.speed += 0.001; racecar.carPositionX += racecar.speed;
+      if (racecar.rightDown && canMoveRight && racecar.speed <= racecar.maxSpeed) {racecar.speed *= 2; racecar.carPositionX += racecar.speed;
       } 
-      else if (racecar.rightDown && canMoveRight && racecar.speed < racecar.maxSpeed) {racecar.carPositionX += racecar.speed;
+      else if (racecar.rightDown && canMoveRight && racecar.speed >= racecar.maxSpeed) {racecar.carPositionX += racecar.maxSpeed;
       }
-      if (racecar.leftDown && canMoveLeft) {racecar.speed += 0.001; racecar.carPositionX -= racecar.speed;
+      if (racecar.leftDown && canMoveLeft && racecar.speed <= racecar.maxSpeed) {racecar.speed *= 2; racecar.carPositionX -= racecar.speed;
       } 
-      else if (racecar.leftDown && canMoveLeft && racecar.speed < racecar.maxSpeed) {racecar.carPositionX -= racecar.speed;
+      else if (racecar.leftDown && canMoveLeft && racecar.speed >= racecar.maxSpeed) {racecar.carPositionX -= racecar.maxSpeed;
+      }
+      
+      if (!racecar.leftDown && !racecar.backDown && !racecar.frontDown && !racecar.rightDown) {racecar.speed = 0.1;
       }
       racecar.draw();
+      
       
       
       //Lap Counter
@@ -164,25 +168,25 @@ class Board {
       
       if (lapNumber < 2) {
         context.beginPath();
-        context.drawImage(lap1, 437, 0);
+        context.drawImage(lap1, 450, 0);
         context.closePath();
         context.fill();
       }
       if (1 < lapNumber && lapNumber < 3) {
         context.beginPath();
-        context.drawImage(lap2, 437, 0);
+        context.drawImage(lap2, 450, 0);
         context.closePath();
         context.fill();
       }
       if (2 < lapNumber && lapNumber < 4) {
         context.beginPath();
-        context.drawImage(lap3, 437, 0);
+        context.drawImage(lap3, 450, 0);
         context.closePath();
         context.fill();       
       }   
       if (3 < lapNumber) {
         context.beginPath();
-        context.drawImage(youWin, 0, 106);
+        context.drawImage(youWin, 10, 106);
         context.closePath();
         context.fill();
       }

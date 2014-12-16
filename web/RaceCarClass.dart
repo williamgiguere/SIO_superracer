@@ -5,7 +5,7 @@ class RaceCar {
   
   num speed = 0.1;
   num maxSpeed = 1;
-  var collisionImpact = 5;
+  var collisionImpact = 8;
   int scale = 2;
    
   //Car size
