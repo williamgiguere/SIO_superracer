@@ -78,20 +78,23 @@ void main() {
   var resourceManager = new ResourceManager();
     resourceManager.addSound("map", "media/sounds/map1.mp3");
     resourceManager.addSound("map2", "media/sounds/map2.mp3");
+    resourceManager.addSound("countdown", "media/sounds/countdown.mp3");
     resourceManager.load().then((_) {
     resourceManager.getSound("map");
     resourceManager.getSound("map2");
+    resourceManager.getSound("countdown");
   });
 
   querySelector('#play1').onClick.listen((e) {
     board1.init();
+   // resourceManager.getSound("countdown").play());
     resourceManager.getSound("map").play();
   });
 
   querySelector('#play2').onClick.listen((e) {
     board2.init();
+    // resourceManager.getSound("countdown").play();
     resourceManager.getSound("map2").play();
-    resourceManager.getSound("map");
   });
 
 
