@@ -1,0 +1,6 @@
+name: superracertest
+description: A sample web application
+dependencies:
+  box2d: any
+  browser: any
+  stagexl: any

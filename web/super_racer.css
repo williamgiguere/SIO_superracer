@@ -1,0 +1,87 @@
+body {
+  background-image: url('media/racer_wallpaper.png');
+  background-size: 100%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.2em;
+  margin: 15px;
+}
+
+h1 {
+  color: #900000;
+  font-size: 45px;
+  font-family: 'Arial Black', Gadget, sans-serif;
+  align-content: center;
+  text-shadow: 1px 1px 1px #000000;
+}
+
+h2 {
+  color: #000000;
+  font-size: 15px;
+  font-family: 'Arial Black', Gadget, sans-serif;
+  align-content: center;
+}
+
+c {
+  color: #FFFFFF;
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  align-content: center;
+  text-shadow: 1px 1px 1px #000000;
+}
+
+p {
+  color: #303030;
+  font-size: 10px;
+  font-family: 'Arial Black', Gadget, sans-serif;
+}
+
+#title_container_id {
+  width: 100%;
+  height: relative;
+  position: relative;
+  border: 20px;
+  text-align: center;
+  align-content: center;
+  padding-bottom: 0.5cm;
+}
+
+#footer_container_id {
+  width: 100%;
+  height: 60px;
+  position: relative;
+  padding-top: 0.5cm;
+  border: 20px;
+  text-align: center;
+  align-content: center;
+}
+
+#canvas_container_id {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  border: 5px;
+  text-align: center;
+  align-content: center;
+}
+
+
+#sample_container_id {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+#sample_text_id {
+  font-size: 24pt;
+  text-align: center;
+  margin-top: 140px;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+
+
