@@ -3,7 +3,8 @@ part of super_racer;
 class RaceCar {
   Board board;
   
-  num speed = 1;
+  num speed = 0.1;
+  num maxSpeed = 1;
   var collisionImpact = 5;
   int scale = 2;
    

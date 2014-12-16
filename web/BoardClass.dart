@@ -64,6 +64,7 @@ class Board {
       context.drawImageScaledFromSource(raceMap.background, racecar.carPositionX/2, racecar.carPositionY/2, 512, 512, 0, 0, 1024, 1024);
       context.closePath();
       context.fill();
+      
      
       //Right collisions
       for (var i = 0; i < raceMap.collisions.length; i++) {
@@ -127,13 +128,21 @@ class Board {
       }
       
                              
-      if (racecar.backDown && canMoveBack) {racecar.carPositionY += racecar.speed;
+      if (racecar.backDown && canMoveBack) {racecar.speed += 0.001; racecar.carPositionY += racecar.speed;
+      } 
+      else if (racecar.backDown && canMoveBack && racecar.speed <= racecar.maxSpeed) {racecar.carPositionY += racecar.speed;
       }
-      if (racecar.frontDown && canMoveFront) {racecar.carPositionY -= racecar.speed;
+      if (racecar.frontDown && canMoveFront) {racecar.speed += 0.001; racecar.carPositionY -= racecar.speed;
+      } 
+      else if (racecar.frontDown && canMoveFront && racecar.speed < racecar.maxSpeed) {racecar.carPositionY -= racecar.speed;
       }
-      if (racecar.rightDown && canMoveRight) { racecar.carPositionX += racecar.speed;
+      if (racecar.rightDown && canMoveRight) {racecar.speed += 0.001; racecar.carPositionX += racecar.speed;
+      } 
+      else if (racecar.rightDown && canMoveRight && racecar.speed < racecar.maxSpeed) {racecar.carPositionX += racecar.speed;
       }
-      if (racecar.leftDown && canMoveLeft) {racecar.carPositionX -= racecar.speed;
+      if (racecar.leftDown && canMoveLeft) {racecar.speed += 0.001; racecar.carPositionX -= racecar.speed;
+      } 
+      else if (racecar.leftDown && canMoveLeft && racecar.speed < racecar.maxSpeed) {racecar.carPositionX -= racecar.speed;
       }
       racecar.draw();
       
