@@ -14,12 +14,12 @@ part 'RaceCarClass.dart';
 
 
 void main() {
-  
+
   ImageElement map1Img = new ImageElement(src: "/media/map_images/map_1.png");
   ImageElement map2Img = new ImageElement(src: "/media/map_images/map_2.png");
-  
-  
-  RaceMap map1 = new RaceMap (map1Img, 
+
+
+  RaceMap map1 = new RaceMap (map1Img,
     [{'x': 84, 'y': 80, 'width': 52, 'height': 216},
     {'x': 68, 'y': 276, 'width': 20, 'height': 56},
     {'x': 136, 'y': 188, 'width': 208, 'height': 60},
@@ -30,7 +30,7 @@ void main() {
     447,
     290,
     {'x': 368, 'y': 280, 'width': 200, 'height': 0});
-  
+
   RaceMap map2 = new RaceMap (map2Img,
     [{'x':120, 'y':116, 'width':8, 'height':228},
     {'x':124, 'y':100, 'width':20, 'height':20},
@@ -68,28 +68,35 @@ void main() {
     59,
     268,
     {'x': 4, 'y': 258, 'width': 120, 'height': 0});
-  
+
   //get a reference to the canvas
   CanvasElement canvas = document.querySelector('#canvas');
-  
+
   Board board1 = new Board(canvas, map1);
   Board board2 = new Board(canvas, map2);
-  
+
+  var resourceManager = new ResourceManager();
+    resourceManager.addSound("map", "media/sounds/map1.mp3");
+    resourceManager.addSound("map2", "media/sounds/map2.mp3");
+    resourceManager.addSound("countdown", "media/sounds/countdown.mp3");
+    resourceManager.load().then((_) {
+    resourceManager.getSound("map");
+    resourceManager.getSound("map2");
+    resourceManager.getSound("countdown");
+  });
+
   querySelector('#play1').onClick.listen((e) {
     board1.init();
+   // resourceManager.getSound("countdown").play());
+    resourceManager.getSound("map").play();
   });
-  
+
   querySelector('#play2').onClick.listen((e) {
     board2.init();
+    // resourceManager.getSound("countdown").play();
+    resourceManager.getSound("map2").play();
   });
-  
-  
-  
-  var resourceManager = new ResourceManager();
-  resourceManager.addSound("map", "media/sounds/map1.mp3");
-  resourceManager.load().then((_) {
-  resourceManager.getSound("map").play();
-});
+
 
 }
 
