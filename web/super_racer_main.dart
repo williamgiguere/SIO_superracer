@@ -85,17 +85,23 @@ void main() {
     resourceManager.getSound("countdown");
   });
 
+
   querySelector('#play1').onClick.listen((e) {
     board1.init();
-   // resourceManager.getSound("countdown").play());
-    resourceManager.getSound("map").play();
-  });
+    resourceManager.getSound("countdown").play();
+    new Future.delayed(const Duration(seconds:3), () {
+      resourceManager.getSound("map").play();
+    });
+   });
+
 
   querySelector('#play2').onClick.listen((e) {
     board2.init();
-    // resourceManager.getSound("countdown").play();
-    resourceManager.getSound("map2").play();
-  });
+    resourceManager.getSound("countdown").play();
+    new Future.delayed(const Duration(seconds:3), () {
+          resourceManager.getSound("map2").play();
+        });
+    });
 
 
 }
