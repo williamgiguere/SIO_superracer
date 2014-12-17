@@ -2,31 +2,31 @@ part of super_racer;
 
 class RaceCar {
   Board board;
-  
+
   num speed = 0.1;
   num maxSpeed = 1;
   var collisionImpact = 8;
   int scale = 2;
-   
+
   //Car size
   num carWidth = 20;
   num carHeight = 20;
-  
+
   //Car's position on the map
   num carPositionX;
   num carPositionY;
-  
+
   //Boolean to use arrow key to control car
   bool rightDown = false;
   bool leftDown = false;
   bool backDown = false;
   bool frontDown = false;
-  
+
   bool rightUp = false;
-  bool leftUp = false; 
+  bool leftUp = false;
   bool backUp = false;
   bool frontUp = false;
- 
+
   //Car Images
   ImageElement up = new ImageElement(src: "/media/car_images/up.png");
   ImageElement upLeft = new ImageElement(src: "/media/car_images/leftup.png");
@@ -36,17 +36,19 @@ class RaceCar {
   ImageElement downRight = new ImageElement(src: "/media/car_images/rightdown.png");
   ImageElement left = new ImageElement(src: "/media/car_images/left.png");
   ImageElement right = new ImageElement(src: "/media/car_images/right.png");
-  
-  
+
+
   RaceCar(this.board, this.carPositionX, this.carPositionY) {
     draw();
+    new Future.delayed(const Duration(seconds:3), (){
     document.onKeyDown.listen(_turnLeft);
     document.onKeyDown.listen(_turnRight);
     document.onKeyDown.listen(_turnFront);
     document.onKeyDown.listen(_turnBack);
     document.onKeyUp.listen(_onKeyUp);
+  });
   }
-  
+
 //Change rightDown, leftDown Bool if matching arrow keys are pressed
   _turnRight(event) {
     if (event.keyCode == 39) {
@@ -56,7 +58,7 @@ class RaceCar {
       rightDown = true;
     }
   }
-  
+
   _turnLeft(event) {
     if (event.keyCode == 37) {
       leftDown = true;
@@ -65,7 +67,7 @@ class RaceCar {
       leftDown = true;
     }
   }
-  
+
   _turnBack(event) {
     if (event.keyCode == 40) {
       backDown = true;
@@ -74,7 +76,7 @@ class RaceCar {
       backDown = true;
     }
   }
-  
+
   _turnFront(event) {
     if (event.keyCode == 38) {
       frontDown = true;
@@ -112,7 +114,7 @@ class RaceCar {
       frontDown = false;
     }
   }
-  
+
   //Draws the car depending on the keys pressed
   void draw() {
      if (rightDown && !leftDown && !frontDown && !backDown) {
@@ -155,11 +157,11 @@ class RaceCar {
        board.context.drawImageScaled(down, carPositionX, carPositionY, carWidth*scale, carHeight*scale);
        board.context.closePath();
        board.context.fill();
-     } else { 
+     } else {
        board.context.beginPath();
        board.context.drawImageScaled(up, carPositionX, carPositionY, carWidth*scale, carHeight*scale);
        board.context.closePath();
-       board.context.fill();  
+       board.context.fill();
      }
-   } 
+   }
 }

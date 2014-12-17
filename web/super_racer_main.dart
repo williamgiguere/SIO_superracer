@@ -79,10 +79,12 @@ void main() {
     resourceManager.addSound("map", "media/sounds/map1.mp3");
     resourceManager.addSound("map2", "media/sounds/map2.mp3");
     resourceManager.addSound("countdown", "media/sounds/countdown.mp3");
+    resourceManager.addSound("first", "media/sounds/firstplace.mp3");
     resourceManager.load().then((_) {
     resourceManager.getSound("map");
     resourceManager.getSound("map2");
     resourceManager.getSound("countdown");
+    resourceManager.getSound("first");
   });
 
 
