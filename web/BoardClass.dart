@@ -45,6 +45,7 @@ class Board {
     context.drawImageScaledFromSource(raceMap.background, 0, 0, 512, 512, 0, 0, 1024, 1024);
     context.closePath();
     context.fill();
+    context.fillText('Time remaining : 60s', 15, 15);
     racecar = new RaceCar(this, raceMap.startX, raceMap.startY);
     // redraw every 10 ms
     timer = new Timer.periodic(const Duration(milliseconds: 10),
@@ -101,7 +102,7 @@ class Board {
       for (var i = 0; i < raceMap.collisions.length; i++) {
         if (raceMap.collisions.elementAt(i)['x'] < racecar.carPositionX + racecar.carWidth &&
         raceMap.collisions.elementAt(i)['x'] + raceMap.collisions.elementAt(i)['width'] > racecar.carPositionX &&
-        raceMap.collisions.elementAt(i)['y'] < racecar.carPositionY + racecar.carHeight &&
+        raceMap.collisions.elementAt(i)['y'] < racecar.carPositionY + racecar.carHeight  &&
         raceMap.collisions.elementAt(i)['height'] + raceMap.collisions.elementAt(i)['y'] >= racecar.carPositionY ||
         racecar.carPositionY <= 4) {
           canMoveFront = false; {racecar.carPositionY += racecar.collisionImpact;
